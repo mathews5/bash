@@ -52,4 +52,6 @@ fi
 # commands
 # fi
 
-
+# command test could be used for the test command
+# if [ $var -eq 0]; then echo " True "; fi
+# equal: if test $var -eq 0; then echo "True"; fi
