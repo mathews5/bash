@@ -1,36 +1,36 @@
 #!/bin/bash
+no1=4
+no2=5
+# let and "[]" have the same function, attention space 
+#let result=no1+no2
 
-#obtain the process ID of an application
-#pgrep gedit
+result=$[ no1 + no2 ]
+echo $result
 
-#obtain the environment variables associated
-#cat /proc/3047/environ
-#cat /proc/3047/environ | tr '\0' '\n'
+# (()) can also be used
 
-# var=value: this is an assignment operation
-# var="value": if the value contains space, put it between double quotes for assignment operation
-# var = value: this is an equality operation
-# echo $var/${var}: print content of var
+result=$(( no1 + 40 ))
+echo $result
 
-#--------------------------------------
-fruit=apple
-count=5
-echo "we have $count ${fruit}(s)"
-#--------------------------------------
+result=$(expr $no1 + 5)
+echo $result
+#-----------------------------------
+# all above are only for integer, not float
+#----------------------------------
 
-# finding length of string ---------------------
-var=lqizje14283
-echo ${#var}
-#--------------------------------------
-# define used shell --------------------
-echo $SHELL
-#--------------------------------------
+echo " 4 * 0.34 " | bc
+no=40
+result=`echo "$no * 1.4" | bc`
+echo $result
 
-# check for super user: root UID=0 ----------------------
-if [ $UID -ne 0 ];then #add space between [ and $UID
-echo Non Root User. Please run as root.
-else
-echo "Root User"
-fi
-#--------------------------------------
+# 4 decides the length of decimal place
+echo "scale=4;3/8" | bc
+
+# base conversion with BC
+no=100
+echo "obase=2;$no" | bc
+
+# scquare and square root
+echo "sqrt(100)" | bc
+echo "10 ^ 10" | bc
 
