@@ -1,14 +1,21 @@
 #!/bin/bash
-# < is an operator used to read from the file stdin
-# > is an operator used to write to a file with truncation
-# >> is an operator used to write a file with append
+array_var=(1 2 3.4 4)
+echo ${array_var[2]}
+array_var[5]=5
+echo ${array_var[5]}
+array_var[6]=A
+echo ${array_var[6]}
 
-echo this is a test line > input.txt
-#create a file descriptor for reading a file
-exec 3<input.txt
-cat <&3
-#if a second read is needed, another file descriptor must be created before usage
+# print all contenues -----------
+echo ${array_var[*]}
+echo ${array_var[@]}
+echo ${#array_var[*]}
 
-exec 4>output.txt
-exec 5>>error.txt
+# associative array
+declare -A fruit_value
 
+fruit_value=([apple]='100 dollars' [orange]='150 dollars')
+echo "Apple costs ${fruit_value[apple]}"
+
+# change the order
+echo ${!fruit_value[*]}
