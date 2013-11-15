@@ -1,37 +1,55 @@
 #!/bin/bash  
 
-# read -n number_of_chars variable_name
-# this command will read n characters from input into the variable variable_name
+# [ condition ] && action; action executes if condition is true
+# [ condition ] || action; action executes if condition is false
 
-#IFS: Internal Field Separator: an environment variable that stores delimiting characters.
-#CSV: Comma Separated Values
+# [ $var -eq 0 ]; it returns true when $var equal to 0
+# [ $var -nq 0 ]; it returns true when $var not equals 0
+# -gt: greater than
+# -lt: less than
+# -ge: greater than or equal to
+# -le: less than or equal to
 
-data="name,sex,rollno,location"
-#To read each of the item in a variable, we can use IFS.
-oldIFS=$IFS
-IFS=,
-for item in $data;
-do
-echo Item: $item
-done
-IFS=$oldIFS
+# Multiple conditions------------------------------
+# [ $var1 -ne 0 -a $var2 -gt 2]; using AND -a
+# [ $var1 -ne 0 -o var2 -gt 2]; using OR -o
 
+#Filesystem related tests
+# [ -f $file_var ] return true if the given variable holds a regular filepath or filename
 
-line="root:x:0:0:root:/root:/bin/bash"
-oldIFS=$IFS;
-IFS=":"
-count=0
-for item in $line;
-do
-[ $count -eq 0 ] && user=$item;
-[ $count -eq 6 ] && shell=$item
-let count++
-done;
-IFS=$oldIFS
-echo $user\'s shell is $shell;
+# [ -x $var ] return true if the given variable holds a file path or filename which is executable
 
-x=0;
-until [ $x -eq 9 ]; # [ $x -eq 9 ] is the condition
-do let x++; echo $x;
-done
+var="script.sh"
+if [ -x $var ]; then
+echo $var
+fi
+
+# [ -d $var ] return true if the given variable holds a directory path or directory name
+
+#[ -e $var ] return true if the given variable holds an existing file
+
+#[ -c $var ] return true if the given variable holds path of a character device file
+
+#[ -b $var ] return true if the given variable holds path of a block device file
+
+#[ -w $var ] return true if the given variable holds path of a file which is writable
+
+#[ -r $var ] return true if the given variable holds path of a file which is readable
+
+#[ -L $var ] return true if the given variable holds path of a symlink
+
+# String comparision -------------------------------
+# [[ $str1 = $str2 ]] return true when str1 equals str2
+# [[ $str1 == $str2 ]] 
+
+# [[ $str1 != $str2 ]] return true when str1 and str2 mismatches
+
+# [[ -z $str1 ]] return true if str1 holds an empty string
+# [[ -n $str1 ]] return true if str1 holds a non-empty string
+
+# if [[ -n $str1 ]] && [[ -z $str2 ]];
+# then
+# commands
+# fi
+
 
