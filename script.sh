@@ -1,17 +1,24 @@
 #!/bin/bash
+echo Hello World
+echo 'Hello World'
+echo "Hello World"
 
-# "-" means left alignment, and "5" means width equal to 5,if "-" is not specified, it will be aligned to right.
+echo 'Hello ! World'
+echo "Hello ! World"
 
-#character
-printf "%-5s %-10s %-4s\n" No Name Mark
+var=24
+echo $var
+echo "$var"
+#the two first work, but the last one will give the content between ''
+#echo '$var'
 
-#integer
-printf "%-5d %-10d %-4d\n" 52 100 854158
+#"-n" will delete the newline at the end of the output
+echo -n Hello 
 
-#for folat, ".2/.4" limit the width of the decimal place, but does not limit that of before-decimal.
-#float
-printf "%-5.2f %-2.4f %-2.2f\n" 15,2 24,249312 125,478
+#print colored output
+#"\e[1;31m" sets the color and "\e[0m" sets the color back
+echo -e "\e[1;31m This is red text \e[0m"
+echo -e "\e[1;31m This is red text, and I don't set it back\nso you will see two red lines and also the following lines in the console"
+#line 23 set color back
+echo -e "\e[1;0m"
 
-#for "c", il will accept only one character/number
-#character
-printf "%-5c %-3c %-4c\n" abcdefgh qizj5465  5847215
