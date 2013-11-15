@@ -1,29 +1,38 @@
 #!/bin/bash  
 
-# bash -x script.sh/ sh -x script.sh : run script and print each source line with current status
-#set -x: display arguments and commands upon their execution
-#set +x: disable debugging
-#set -v: display input when they are read
-#set +v: disabler  
+#definiation of function
+# function fname()
+# {
+# statements;
+# }
 
-# the following code will only print value of I
-for i in {1..6}
-do
-set -x
-echo $i
-set +x
-done
-echo "Script executed"
+# fname()
+# {
+# statements;
+# }
 
-#we can run the following code with debugging set to "on"
-#_DEBUG=on ./script.sh
-function DEBUG()
+# invoke function
+# fname;
+# fname arg1 arg2;
+
+fname()
 {
-[ "$_DEBUG" == "on" ] && $@ || :
+echo $1, $2; #Accessing arg1 and arg2
+echo "$@"; # Printing all arguments as list at once
+echo "$*"; # Similar to $@, but arguments taken as single entity
+return 0; # Return value
 }
-for i in {1..10}
-do
-DEBUG echo $i
-done
 
+#cmd;
+#echo $?: $? will give the return value of the command cmd
+#the return value is 0 if the cmd is successfully executed
+
+CMD="ls"
+$CMD
+if [ $? -eq 0 ]
+then
+echo "$CMD executed successfully"
+else
+echo "$CMD terminated unsuccessfully"
+fi
 
