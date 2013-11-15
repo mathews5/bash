@@ -1,24 +1,36 @@
 #!/bin/bash
-echo Hello World
-echo 'Hello World'
-echo "Hello World"
 
-echo 'Hello ! World'
-echo "Hello ! World"
+#obtain the process ID of an application
+#pgrep gedit
 
-var=24
-echo $var
-echo "$var"
-#the two first work, but the last one will give the content between ''
-#echo '$var'
+#obtain the environment variables associated
+#cat /proc/3047/environ
+#cat /proc/3047/environ | tr '\0' '\n'
 
-#"-n" will delete the newline at the end of the output
-echo -n Hello 
+# var=value: this is an assignment operation
+# var="value": if the value contains space, put it between double quotes for assignment operation
+# var = value: this is an equality operation
+# echo $var/${var}: print content of var
 
-#print colored output
-#"\e[1;31m" sets the color and "\e[0m" sets the color back
-echo -e "\e[1;31m This is red text \e[0m"
-echo -e "\e[1;31m This is red text, and I don't set it back\nso you will see two red lines and also the following lines in the console"
-#line 23 set color back
-echo -e "\e[1;0m"
+#--------------------------------------
+fruit=apple
+count=5
+echo "we have $count ${fruit}(s)"
+#--------------------------------------
+
+# finding length of string ---------------------
+var=lqizje14283
+echo ${#var}
+#--------------------------------------
+# define used shell --------------------
+echo $SHELL
+#--------------------------------------
+
+# check for super user: root UID=0 ----------------------
+if [ $UID -ne 0 ];then #add space between [ and $UID
+echo Non Root User. Please run as root.
+else
+echo "Root User"
+fi
+#--------------------------------------
 
