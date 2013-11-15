@@ -1,21 +1,24 @@
 #!/bin/bash
-array_var=(1 2 3.4 4)
-echo ${array_var[2]}
-array_var[5]=5
-echo ${array_var[5]}
-array_var[6]=A
-echo ${array_var[6]}
 
-# print all contenues -----------
-echo ${array_var[*]}
-echo ${array_var[@]}
-echo ${#array_var[*]}
+# print the current terminal name
+tput longname
 
-# associative array
-declare -A fruit_value
+# move cursos to a position 100,100
+tput cup 100 100
 
-fruit_value=([apple]='100 dollars' [orange]='150 dollars')
-echo "Apple costs ${fruit_value[apple]}"
+# set background color for terminal
+# tput setb 3 #NO from 0 to 7
 
-# change the order
-echo ${!fruit_value[*]}
+# set foreground color
+# tput setf 5
+
+# make the text bold 
+tput bold
+
+# start and end underlining
+tput smul
+tput rmul
+
+
+
+
