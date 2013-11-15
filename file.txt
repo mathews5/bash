@@ -1,4 +1,0 @@
-     1	def function()
-     2		var = 5
-     3	             next = 6
-     4		third = 7	
