@@ -1,36 +1,27 @@
 #!/bin/bash
-no1=4
-no2=5
-# let and "[]" have the same function, attention space 
-#let result=no1+no2
 
-result=$[ no1 + no2 ]
-echo $result
+#file descriptors are integers that are associated with file input and output. the best-known file descriptors are stdin(0), stdout(1) and stderr(2).
 
-# (()) can also be used
+#redirect or save output text to a file
+echo "This is a sample text 1" > temp.txt
+#the contents will be cleared before writing into it
+echo " This is another sample text" >> temp.txt
+#this command will append the new text at the end of file
 
-result=$(( no1 + 40 ))
-echo $result
+#ls + 2>out.txt #store message into file out.txt
 
-result=$(expr $no1 + 5)
-echo $result
-#-----------------------------------
-# all above are only for integer, not float
-#----------------------------------
+#ls + 2>stderr.txt 1>stdout.txt #store message into two files
+#ls + 2>&1 out.txt #store error message to output file
 
-echo " 4 * 0.34 " | bc
-no=40
-result=`echo "$no * 1.4" | bc`
-echo $result
+# TEE make the copy of former command result to the next command
+#cat out.txt | tee kn.txt | cat -n
 
-# 4 decides the length of decimal place
-echo "scale=4;3/8" | bc
+# tee -a put the new content at the end of file
+#cat out.txt | tee -a kn.txt | cat -n
 
-# base conversion with BC
-no=100
-echo "obase=2;$no" | bc
-
-# scquare and square root
-echo "sqrt(100)" | bc
-echo "10 ^ 10" | bc
-
+#between line 23 and line 27(EOF) will appear as stdin data.
+cat <<EOF >log.txt
+LOG FILE HEADER
+This is a test log file
+Function:System statistics
+EOF
