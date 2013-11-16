@@ -12,9 +12,15 @@ CFLAGS=-Wall
 # EXEC content the name of the executable file 
 EXEC=hello
 
+# SRC content source files of project
+SRC=hello.c main.c
+
+# OBJ content object files
+OBJ=$(SRC:.c=.o)
+
 all: ${EXEC}
 
-hello: hello.o main.o
+hello: ${OBJ}
 	${CC} -o $@ $^
 
 #hello.o: hello.c
