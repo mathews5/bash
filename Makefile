@@ -25,6 +25,9 @@ hello: hello.o main.o
 %.o: %.c
 	${CC} -o $@ -c $< ${CFLAGS}
 
+# .PHONY follewed by some out-of-date target, so make <PHONY target> will run even if there is a file named "clean"
+.PHONY: clean mrproper
+
 clean:
 	rm -rf *.o
 mrproper:clean
