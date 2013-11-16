@@ -5,9 +5,15 @@
 
 CC=gcc
 
+DEBUG=yes
+
 # CFLAGS regroup options of compilation for C
 # CXXFLAGS for C++
-CFLAGS=-Wall
+ifeq ($(DEBUG),yes)
+	CFLAGS=-Wall -g
+else
+	CFLAGS=-Wall 
+endif
 
 # EXEC content the name of the executable file 
 EXEC=hello
@@ -21,6 +27,12 @@ OBJ=$(SRC:.c=.o)
 
 all: ${EXEC}
 
+ifeq ($(DEBUG),yes)
+	@echo "Generate on debug mode" # without @, il will give this line and the contenue inside
+else
+	@echo "Generate on release mode"
+endif
+# add @ before command lines to prevent them appearing in the console
 hello: ${OBJ}
 	@${CC} -o $@ $^
 
