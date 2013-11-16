@@ -13,7 +13,8 @@ CFLAGS=-Wall
 EXEC=hello
 
 # SRC content source files of project
-SRC=hello.c main.c
+#SRC=hello.c main.c
+SRC=$(wildcard *.c)
 
 # OBJ content object files
 OBJ=$(SRC:.c=.o)
