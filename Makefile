@@ -1,7 +1,7 @@
 # $@: represent object name 
 # $<: first dependency file name
-# @^: all dependency files
-# @?: dependency files newer than the object
+# $^: all dependency files
+# $?: dependency files newer than the object
 
 CC=gcc
 
@@ -17,10 +17,12 @@ all: ${EXEC}
 hello: hello.o main.o
 	${CC} -o $@ $^
 
-hello.o: hello.c
-	${CC} -o $@ -c $< ${CFLAGS}
-
-main.o: main.c hello.h
+#hello.o: hello.c
+#	${CC} -o $@ -c $< ${CFLAGS}
+#main.o: main.c hello.h
+#	${CC} -o $@ -c $< ${CFLAGS}
+# replace by %.o: %.c
+%.o: %.c
 	${CC} -o $@ -c $< ${CFLAGS}
 
 clean:
