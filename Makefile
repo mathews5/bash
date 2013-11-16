@@ -1,6 +1,7 @@
-# all: regroup all executable files to generate
-# clean: delete all intermediate files(.o)
-# mrproper: delete all intermediate files and reconstructe the project
+# $@: represent object name 
+# $<: first dependency file name
+# @^: all dependency files
+# @?: dependency files newer than the object
 
 CC=gcc
 
@@ -14,13 +15,13 @@ EXEC=hello
 all: ${EXEC}
 
 hello: hello.o main.o
-	${CC} -o hello hello.o main.o
+	${CC} -o $@ $^
 
 hello.o: hello.c
-	${CC} -o hello.o -c hello.c ${CFLAGS}
+	${CC} -o $@ -c $< ${CFLAGS}
 
 main.o: main.c hello.h
-	${CC} -o main.o -c main.c ${CFLAGS}
+	${CC} -o $@ -c $< ${CFLAGS}
 
 clean:
 	rm -rf *.o
