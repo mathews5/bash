@@ -22,7 +22,7 @@ OBJ=$(SRC:.c=.o)
 all: ${EXEC}
 
 hello: ${OBJ}
-	${CC} -o $@ $^
+	@${CC} -o $@ $^
 
 #hello.o: hello.c
 #	${CC} -o $@ -c $< ${CFLAGS}
@@ -30,12 +30,12 @@ hello: ${OBJ}
 #	${CC} -o $@ -c $< ${CFLAGS}
 # replace by %.o: %.c
 %.o: %.c
-	${CC} -o $@ -c $< ${CFLAGS}
+	@${CC} -o $@ -c $< ${CFLAGS}
 
 # .PHONY follewed by some out-of-date target, so make <PHONY target> will run even if there is a file named "clean"
 .PHONY: clean mrproper
 
 clean:
-	rm -rf *.o
+	@rm -rf *.o
 mrproper:clean
-	rm -rf ${EXEC}
+	@rm -rf ${EXEC}
