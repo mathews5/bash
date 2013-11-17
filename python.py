@@ -1,37 +1,40 @@
 #!/usr/bin/python
-print "Hello,python!";
 
-# naming convention
-# Class names start with an uppercase letter and all other with a lowercase letter
-# Starting an identifier with a single leading undersocre indicates by convention that the identifier is meant to be private
-# Starting an identifier with two leading underscores indicates a strongly private identifier
-# If the identifier also ends with two trailing underscores, the identifier is a language-defiend special name
+# Data Type : Number, String, List, Tuple, Dictionary#
 
-# Python use identation to indicate blocks of code 
+# Number
+# create: var = 10
+# delete: del var
+# int: 0x284, 023
+# long: 984L
+# float: 29E12
+# complex: 34+5j
 
-# Multi-line statements
-# total = a + \
-# 	  b + \
-# 	  c
+# String: single or double quotes
+# str = 'Hello Python!' 
+# print str
+# print str[0]
+# print str[0:3]
+# print str[0:]
+# print str * 2  print str two times
+# print str + "TEST" concatenated string
 
-# statements contained within the {}, [] or () do not need use the line continuation character
-# days = [ 'Monday','Tuesday',
-#		'Wednesday',
-#		'Thursday', 'Friday'] 
+# List: a group of different type data
+# list = ['abcd', 487, 3.3]
+# manipulation of list is same as string
 
-# word = 'word'
-# word = "word"
-# word = """ Triple quotes can be used
-#		to span the string
-#		across multiple lines """
+# Tuple: read-only and enclosed by ()
+# mytuple = ('abc', 384, 39.3)
+# manipulation of list is same as string
 
+# Dictionary
+# tinydict = {'name':'john', 'code':3843}
+# print tinydict.keys():['code','name']
+# print tinydict.values():['3843','john']
 
-# if expression:
-#    instruments
-# elif expression:
-#    instruments
-# else:
-#    instruments
+# Multiple Assignement #
+a = b = c = 1
+a, b, c = 1, 2, "John"
 
 
 
