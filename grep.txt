@@ -1,5 +1,0 @@
-earching inside a file is an important use case in text processing. We may need to
-search through thousands of lines in a file to find out some required data by using certain
-specifications. This recipe will help you learn how to locate data items of a given specification
-from a pool of data.
-
