@@ -1,41 +1,55 @@
 #!/bin/bash  
 
-# find . -print # print out all files at present position
+# grep "match_pattern" filename ... ...
+# grep  match_pattern  filename filename1 filename 2 ...
+# it gives the line containing match_pattern
 
-# -name specifies a matching string for the filename
-# find /home/mingzhao -name "*.txt" -print  
-# -iname ignore the case
-# find /home/mingzhao -iname "*.txt" -print  
+# read from stdin
+echo -e "this is a word\nnew line" 
+echo -e "this is a word\nnew line" | grep word
 
-# -o OR condition to combine multiple criterions \( and )\ is used to treat the content as a single unit
-#find . \( -name "*.txt" -o -name "*.pdf" \) 
+# highlignt the word in the line --color
+grep "inside" grep.txt --color=auto
 
-#-path will match the file path for files that match the wildcards
-#find /home/mingzhao -path "*.txt"
-#will give files 
-#/home/mingzhao/Document/*.txt
-#/home/mingzhao/*.txt
-#/home/mingzhao/Music/chine/*.txt
+# print only the matching portion
+cat grep.txt | grep -o "inside"  
 
-#find . ! -name "*.txt" # this command find the files who doesnot end with .txt
+# print all of the lines except the line containing match_pattern
+cat grep.txt | grep -v "inside"
 
-find . -maxdepth 1 -type f # print files at level 1 location(present location)
-find . -mindepth 2 -type f # print files at least 2 levels away frompresent location
+# count number of lines in which a matching string or regex match appears in a file
+cat grep.txt | grep -c "inside"
 
-find . -type d # list only directories including descendants
-find . -type f # list only regular files
-find . -type l # list symbolic links
+# count the number of matching items in a file
+cat grep.txt | grep  "inside" | wc -l
 
-find . -type f -atime -7 # all files that were accessed within the past 7 days
-find . -type f -atime +7 # all files that were accessed older than 7 days
-find . -type f -size +2k # files greater than 2 kb
-find . -type f -size -2k # files smaller than 2 kb
-# b:512 byte; c:byte; w:2 byte word; k/M/G
+# print the line number of the match string
+cat grep.txt | grep -n "inside"  
 
-#find . -type f -name "*.swp" -delete #delete all .swp file at the present directory 
+# print the character offset at which a pattern matches, it counts from 0
+echo gun is not unix | grep -b -o "not"
 
-#{} will be replaced by the file found by "find"
-#find . -type f -user root -exec chown mingzhao {} \
+# search over many files and find out in which of the files a certain text matches
+#grep -l "match_pattern" file1 file2 file3 ...
+#file1
+#file2
 
-#copy files to Documents
-#find . -type f -mtime +10 -name "*.txt" -exec cp {} Documents \
+#recursively search for a text over many directories of descendants
+grep "main(" . -R -n
+
+# ignore case sensitive
+echo hello world | grep -i -o "HELLO"
+
+# matching multiple patterns
+echo this is a line of text | grep -e "this" -e "line" -o 
+
+# matching multiple patterns with a pattern file, add -e to accepte \n
+echo -e "this is a line of text, very cool\nnew cool line" | grep -f pat_file
+
+# search only .c and .cpp files
+# grep "main()" . -r --include *.{c,cpp}
+
+# exclude files/directory
+# grep "main()" . -r --exclude "README"
+# grep "main" . -r --exclude-dir "Documents"
+
