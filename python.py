@@ -1,27 +1,22 @@
 #!/usr/bin/python
 
-# def function_name( parameters ):
-#    instruments
-#    return [expression]
+str = raw_input("enter:");
+print "input is:", str
 
-def printname( str ):
-    print str;
-    return;
+# input accepte expression and gives directely the resultat
+str = input("enter:");
+print "input is:", str
 
-printname(" I'm good!");
+# file manipulation
+#fd = open("python.py","w+")
+#fd.close()
+#fd.write("python is good!\n");
+#str=fd.read(50); read 50 bytes
 
-total=0 # global variable
+#os module provides methods helping performing file-processing operations
+#import os
+#os.rename("current_file_name","new_file_name")
+#os.remove(file_name) delete files
 
-# variable-length arguments
-def printinfo( arg1, *vartuple ):
-    print "output is:"
-    print arg1
-    for var in vartuple:
-	print var
-    return;
-
-printinfo(10);
-
-sum = lambda arg1, arg2: arg1 + arg2;
-
-print sum(20, 30);
+#os.mkdir("new_folder")
+#os.chdir("/home/Documents") change current directory
