@@ -1,22 +1,33 @@
 #!/usr/bin/python
 
-str = raw_input("enter:");
-print "input is:", str
+# try:
+#    fh = open("testfile", "w")
+#    fh.write("This is my test file for exception handling!!")
+# except IOError:
+#    print "Error: can\'t find file or read data"
+# else:
+#    print "Written content in the file successfully"
+#    fh.close()
+# finally:
+#    this will always be executed
 
-# input accepte expression and gives directely the resultat
-str = input("enter:");
-print "input is:", str
+# raise an exception
+# if (condition)
+#	raise "exception", level
 
-# file manipulation
-#fd = open("python.py","w+")
-#fd.close()
-#fd.write("python is good!\n");
-#str=fd.read(50); read 50 bytes
+# try:
+#	instruments
+# except "exception":
+#	instruments
+# else:
+#	other instruments 
 
-#os module provides methods helping performing file-processing operations
-#import os
-#os.rename("current_file_name","new_file_name")
-#os.remove(file_name) delete files
+# user-defined exception
+# class Networkerr(RuntimeError):
+#	def __init__(self, arg):
+#	    self.args=arg
 
-#os.mkdir("new_folder")
-#os.chdir("/home/Documents") change current directory
+# try:
+#    raise Networkerr("bad hostname)"
+# except Networkerr, e:
+# print e.args
