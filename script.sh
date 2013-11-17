@@ -1,28 +1,7 @@
 #!/bin/bash  
 
-#replace of by de, only for the first occurrence, put in the console, donot change the file 
-#sed 's/is/est/' sed.txt
+# AWK is a tool designed to work with data streams. It is very interesting as it can operate on columns and rows.
+# awk '/" BEGIN{ commands} pattern{commands} END {commands} '/" file
 
-# replace the first occurence and save to a new file, replace and save to new file
-#sed 's/is/est/' sed.txt > new_sed.txt
-
-# replace the first occurence and save to the same file
-#sed -i 's/is/est/' sed.txt
-
-# replace all occurrences of pattern 'g'
-#sed 's/is/est/g' sed.txt
-
-# replace from the N-th occurrence
-#echo 1this2this3this | sed 's/this/THIS/2g'
-
-# / is a delimiter, we can use any character, :, |
-
-# remove blank line, this command will remove /pattern/d
-#sed '/^$/d' blank.txt  
-
-# matched string notation (&), \w\+ matches every word
-#echo this is an example | sed 's/ \w\+ /[&]/g'
-
-# variable string in sed expression, note double quotes
-text=hello
-echo hello world | sed "s/$text/HELLO/"
+# when the arguments of print are separated by commas, they are printed with a space delimiter.double quotes are used in the context of print. 
+echo | awk '{ var1="v1"; var2="v2"; var3="v3"; print var1, var2, var3;}'
