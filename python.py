@@ -1,28 +1,28 @@
 #!/usr/bin/python
-
-import stat, sys, os, string, commands
-
-#Getting search pattern from user and assigning it to a list
+import tarfile, sys
 
 try:
-    #run a 'find' command and assign results to a variable
-    pattern = raw_input("Enter the file pattern to search for:\n")
-    commandString = "find ~/ -path " + pattern
-    commandOutput = commands.getoutput(commandString)
-    findResults = string.split(commandOutput, "\n")
+    #open tarfile
+    tar = tarfile.open(sys.argv[1],"r:tar")
+ 
+    #present menu and get selection
+    selection = raw_input("Enter\n\
+    1 to extract a file\n\
+    2 to display information on a file in the archive\n\
+    3 to list all the files in the archive\n\n")
 
-    #output find results, along with permissions
-    print "Files:"
-    print commandOutput
-    print "================================"
-    for file in findResults:
-        mode=stat.S_IMODE(os.lstat(file)[stat.ST_MODE])
-        print "\nPermissions for file ", file, ":"
-        for level in "USR", "GRP", "OTH":
-            for perm in "R", "W", "X":
-                if mode & getattr(stat,"S_I"+perm+level):
-                    print level, " has ", perm, " permission"
-                else:
-                    print level, " does NOT have ", perm, " permission"
+    #perform actions based on selection above
+    if selection == "1":
+        filename = raw_input("enter the filename to extract: ")
+        tar.extract(filename)
+    elif selection == "2":
+        filename = raw_input("enter the filename to inspect: ")
+        for tarinfo in tar:
+            if tarinfo.name == filename:
+                print "\n\
+                Filename:\t\t", tarinfor.name, "\n\
+                Size:\t\t", tarinfo.size, "bytes\n"
+    elif selection == "3":
+        print tar.list(verbose=True)
 except:
-    print "There was a problem - check the message above"
+    print "There was a problem running the program"                    
