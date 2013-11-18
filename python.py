@@ -1,28 +1,20 @@
 #!/usr/bin/python
-import tarfile, sys
+import commands, os, string
+
+program = raw_input("Enter the name of the program to check:")
 
 try:
-    #open tarfile
-    tar = tarfile.open(sys.argv[1],"r:tar")
- 
-    #present menu and get selection
-    selection = raw_input("Enter\n\
-    1 to extract a file\n\
-    2 to display information on a file in the archive\n\
-    3 to list all the files in the archive\n\n")
+#perform a ps command and assign results to a list
+    output = commands.getoutput("ps -f|grep " + program) 
+   #proginfo = output.split()
+    proginfo = string.split(output) 
+#display results
+    print "\n\
+    Full path:\t\t", proginfo[5], "\n\
+    Owner: \t\t", proginfo[0], "\n\
+    Process ID:\t\t", proginfo[1], "\n\
+    Parent process ID:\t", proginfo[2],"\n\
+    Time started:\t", proginfo[4]
 
-    #perform actions based on selection above
-    if selection == "1":
-        filename = raw_input("enter the filename to extract: ")
-        tar.extract(filename)
-    elif selection == "2":
-        filename = raw_input("enter the filename to inspect: ")
-        for tarinfo in tar:
-            if tarinfo.name == filename:
-                print "\n\
-                Filename:\t\t", tarinfor.name, "\n\
-                Size:\t\t", tarinfo.size, "bytes\n"
-    elif selection == "3":
-        print tar.list(verbose=True)
 except:
-    print "There was a problem running the program"                    
+    print "There was a problem with the program."                  
