@@ -1,31 +1,30 @@
 #!/usr/bin/python
-
-import pwd
-
-#initialize counters
-erroruser = []
-errorpass = []
-
-#get password database
-passwd_db = pwd.getpwall()
+import os
 
 try:
-    #check each user and password for validity
-    for entry in passwd_db:
-        username = entry[0]
-        password = entry[1]
-        if len(username) < 6:
-            erroruser.append(username)
-        if len(password) < 8:             
-            errorpass.append(username)
-    #print results to screen
-    print " The following users have an invalid userid (less than six characters):"
-    for item in erroruser:
-        print item
-    print "\nThe following users have an invalid password (less than eight characters):"
-    for item in errorpass:
-        print item
-                           
+    positionString = os.getcwd()
+    print "\t", positionString
+    commandChoosen=raw_input(
+            "Choose the operation:\n\
+            1: create a new direcotory\n\
+            2: list all the directory\n\
+            3: rename a chosen directory\n\
+            4: delete a chosen directory\n")
+    if commandChoosen == "1":
+            # new_dir=positionString+"/new"  
+            # print new_dir
+            os.mkdir(positionString + "/new")
+    elif commandChoosen == "2":
+            print os.listdir(positionString)
+    elif commandChoosen == "3":
+            oldName=raw_input("Choose the directory to change name\n")
+            newName=raw_input("Enter new name of the directory\n")
+            os.rename(oldName,newName)
+            print os.listdir(positionString)
+    elif commandChoosen == "4":
+            print os.listdir(positionString)
+            delDir=raw_input("enter the directory to delete\n")
+            os.rmdir(delDir)       
+            print os.listdir(positionString)
 except:
-    print "There was a problem running the scrip." 
-
+    print "There was a problem"     
